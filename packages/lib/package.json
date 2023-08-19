@@ -1,0 +1,38 @@
+{
+  "name": "prisma-pgtyped-prepared-query",
+  "version": "0.0.1",
+  "packageManager": "pnpm@7.18.2",
+  "types": "dist/prisma-pgtyped.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.cjs",
+    "dist",
+    "!dist/*.tsbuildinfo"
+  ],
+  "scripts": {
+    "prebuild": "pnpm compile",
+    "build": "swc --config-file ../../.swcrc --out-dir dist src",
+    "dev": "pnpm run build -- --watch",
+    "compile": "tsc -p .",
+    "compile:dev": "tsc -p . --no-emit",
+    "prepack": "node scripts/prepack",
+    "postpack": "node scripts/postpack"
+  },
+  "devDependencies": {
+    "@pgtyped/runtime": "^2.0.0",
+    "@prisma/client": "^5.0.0",
+    "@swc/cli": "^0.1.62",
+    "@swc/core": "^1.3.78",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@pgtyped/runtime": "^2.0.0",
+    "@prisma/client": "^5.0.0"
+  }
+}
